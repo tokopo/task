@@ -26,17 +26,19 @@ class TasksController < ApplicationController
     task.save!
     redirect_to tasks_url, notice: "タスク 「#{task.name}」を登録しました。"
   end
-  private
-
-  def task_params
-    params.require(:task).permit(:name, :description)
-  end
 
   def destroy
     task = Task.find(params[:id])
     task.destroy
     redirect_to tasks_url, notice: "タスク 「#{task.name}」 を削除しました。"
   end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :description)
+  end
+
 
   
   end
